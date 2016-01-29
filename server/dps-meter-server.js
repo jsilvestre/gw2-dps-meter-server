@@ -58,14 +58,14 @@ module.exports = function(host, port, emit) {
 
     var analyzer = new Analyzer(emit);
 
-    setTimeout(function() {
+    /*setTimeout(function() {
         var fs = require('fs');
         var path = require('path');
         data1 = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../progress.json')));
         data2 = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../progress2.json')));
         analyzer.onEndTry(data1);
         analyzer.onEndTry(data2);
-    }, 1000);
+    }, 1000);*/
 
     var onDump = analyzer.onDump.bind(analyzer);
     var onEndTry = analyzer.onEndTry.bind(analyzer);
