@@ -2,7 +2,7 @@ var debug = require('debug')('app:try-tracker');
 var hasValue = require('../hasValue');
 var _ = require('underscore');
 
-var TRY_TIMEOUT = 15 * 1000;
+var TRY_TIMEOUT = 10 * 1000;
 
 var TryTracker = function(onDump, onTryEnd) {
 
@@ -21,6 +21,8 @@ var TryTracker = function(onDump, onTryEnd) {
 TryTracker.prototype.pushData = function(nickname, dps) {
     dps = parseInt(dps);
 
+    debug('Received data from ' + nickname);
+
     if (!this.isTryRunning) {
         this.startTry();
     }
@@ -36,7 +38,7 @@ TryTracker.prototype.pushData = function(nickname, dps) {
 
 
 TryTracker.prototype.dump = function(timestamp) {
-    debug('Dump current progress.');
+    debug('Dump current progress for players=' + Object.keys(this.players));
     this.currentTry.push({
         players: _.clone(this.players),
         timestamp: timestamp
@@ -79,11 +81,13 @@ TryTracker.prototype.stopTry = function() {
 
 TryTracker.prototype.resetTimeout = function() {
     if (this.timeout) {
+        debug('Clear timeout');
         clearTimeout(this.timeout);
         this.timeout = null;
     }
 
     if (this.isTryRunning) {
+        debug('Start timeout');
         this.timeout = setTimeout(this.stopTry.bind(this), TRY_TIMEOUT);
     }
 }
