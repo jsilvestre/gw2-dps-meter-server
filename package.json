@@ -1,0 +1,27 @@
+{
+  "name": "gw2-dpsmeter-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "dependencies": {
+    "debug": "2.2.0",
+    "express": "4.13.4",
+    "socket.io": "1.4.5",
+    "underscore": "1.8.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jsilvestre/gw2-dps-meter-server.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jsilvestre/gw2-dps-meter-server/issues"
+  },
+  "homepage": "https://github.com/jsilvestre/gw2-dps-meter-server"
+}
